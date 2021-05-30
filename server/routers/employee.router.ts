@@ -13,6 +13,6 @@ employeeRouter.get('/', getEmployees);
 employeeRouter.get('/:id', getEmployeeById);
 employeeRouter.post('/', addEmployee);
 employeeRouter.put('/:id', updateEmployee);
-employeeRouter.delete('/', deleteEmployee);
+employeeRouter.delete('/:id', deleteEmployee);
 
 export default employeeRouter;

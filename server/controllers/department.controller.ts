@@ -1,5 +1,6 @@
-import sequelize from '../';
+import sequelize from '..';
 import Department from '../models/department';
+import logger from '../../logger';
 
 export async function getDepartments(req, res, next) {
     try {
@@ -9,7 +10,7 @@ export async function getDepartments(req, res, next) {
 
         return res.json(data);
     } catch (error) {
-        console.log('getDepartments()::failed', error);
+        logger.log('error', 'getDepartments()', error);
         res.json(error);
     }
 };
@@ -26,7 +27,7 @@ export async function getDepartmentById(req, res, next) {
 
         return res.json(data);
     } catch (error) {
-        console.log('getDepartmentsById()::failed', error);
+        logger.log('error', 'getDepartmentById()', error);
         res.json(error);
     }
 };
@@ -41,7 +42,7 @@ export async function addDepartment(req, res, next) {
 
         return res.json(data);
     } catch (error) {
-        console.log('addDepartment()::failed', error);
+        logger.log('error', 'addDepartment()', error);
         res.json(error);
     }
 };
@@ -59,7 +60,24 @@ export async function updateDepartment(req, res, next) {
 
         return res.json(data);
     } catch (error) {
-        console.log('updateDepartment()::failed', error);
+        logger.log('error', 'updateDepartment()', error);
+        res.json(error);
+    }
+};
+
+export async function deleteDepartment(req, res, next) {
+    try {
+        const departmentId = req.params.id;
+
+        await sequelize.sync();
+
+        const data = await Department.destroy({
+            where: { departmentId }
+        });
+
+        return res.json(data);
+    } catch (error) {
+        logger.log('error', 'deleteDepartment()', error);
         res.json(error);
     }
 };

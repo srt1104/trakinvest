@@ -1,5 +1,5 @@
 import { INTEGER, STRING } from 'sequelize';
-import sequelize from '../';
+import sequelize from '..';
 
 const Department = sequelize.define('Department', {
     departmentId: {

@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+    postgres:
+        image: postgres
+    nodejs:
+        build: ./
+        ports:
+            - '3000:3000'
+        environment:
+            DB_HOST: postgres
+            DB_NAME: postgres
+            DB_USER: postgres
+            DB_PASS: postgres
+        depends_on:
+            - postgres

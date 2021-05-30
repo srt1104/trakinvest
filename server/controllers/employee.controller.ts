@@ -1,5 +1,6 @@
-import sequelize from '../';
+import sequelize from '..';
 import Employee from '../models/employee';
+import logger from '../../logger';
 
 export async function getEmployees(req, res, next) {
     try {
@@ -9,7 +10,7 @@ export async function getEmployees(req, res, next) {
 
         return res.json(data);
     } catch (error) {
-        console.log('getEmployees()::failed', error);
+        logger.log('error', 'getEmployees()', error);
         res.json(error);
     }
 };
@@ -26,7 +27,7 @@ export async function getEmployeeById(req, res, next) {
 
         return res.json(data);
     } catch (error) {
-        console.log('getEmployeesById()::failed', error);
+        logger.log('error', 'getEmployeeById()', error);
         res.json(error);
     }
 };
@@ -41,7 +42,7 @@ export async function addEmployee(req, res, next) {
 
         return res.json(data);
     } catch (error) {
-        console.log('addEmployee()::failed', error);
+        logger.log('error', 'addEmployee()', error);
         res.json(error);
     }
 };
@@ -59,7 +60,7 @@ export async function updateEmployee(req, res, next) {
 
         return res.json(data);
     } catch (error) {
-        console.log('updateEmployee()::failed', error);
+        logger.log('error', 'updateEmployee()', error);
         res.json(error);
     }
 };
@@ -76,7 +77,7 @@ export async function deleteEmployee(req, res, next) {
 
         return res.json(data);
     } catch (error) {
-        console.log('deleteEmployee()::failed', error);
+        logger.log('error', 'deleteEmployee()', error);
         res.json(error);
     }
 };
